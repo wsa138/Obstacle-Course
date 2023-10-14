@@ -1,0 +1,74 @@
+{
+    "name": "InputSystem",
+    "maps": [
+        {
+            "name": "PlayerControl",
+            "id": "b9ae3413-c43a-4bd8-a50e-0e0e3b7962f8",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "3df5bb42-c649-41fe-aee7-6e1313130bdd",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ConfirmButton",
+                    "type": "Button",
+                    "id": "d4f799ff-df57-4386-8f09-c11b1fef03dd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "QuitButton",
+                    "type": "Button",
+                    "id": "5d403d90-7721-463d-b2b8-49afc928a70a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "473f9222-a766-41a6-b375-bb223c5f6007",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5fabd5cc-0704-4ee1-9b86-3f0765e624b5",
+                    "path": "<Joystick>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ConfirmButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23ffc3da-15a0-45b7-a2e4-571db0546771",
+                    "path": "<HID::Google LLC Stadia Controller rev. A>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuitButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

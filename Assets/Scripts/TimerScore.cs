@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class TimerScore : MonoBehaviour
@@ -15,6 +16,8 @@ public class TimerScore : MonoBehaviour
     private bool win = false;
     private bool endScore = false;
     private bool startGame = false;
+
+    public GameObject myPanel; // Reference to your panel GameObject
 
     [SerializeField] TextMeshProUGUI timeText;
 
@@ -40,7 +43,6 @@ public class TimerScore : MonoBehaviour
 
         if (win == true)
         {
-            Debug.Log(playTime);
             win = false;
             endScore = true;
         }
@@ -66,7 +68,6 @@ public class TimerScore : MonoBehaviour
     {
         win = true;
         finalScore = playTime + totalHits.hits;
-        Debug.Log("Score: " + playTime + totalHits.hits + " --- Total Hits: " + totalHits.hits);
         timeText.text = finalScore.ToString("F2");
         Time.timeScale = 0f;
     }
@@ -75,7 +76,6 @@ public class TimerScore : MonoBehaviour
     {
         startGame = true;
         Time.timeScale = 1f;
-        Debug.Log("Game Started");
     }
 
     private void ResetSceneCheck()
@@ -84,5 +84,16 @@ public class TimerScore : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    private void OnConfirmButton()
+    {
+        StartGame();
+        myPanel.SetActive(false); // Deactivate the panel to hide it
+    }
+
+    private void OnQuitButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

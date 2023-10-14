@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Mover : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float controllerSpeed;
+    [SerializeField] private float yVel;
+    private Vector3 moveInputValue;
 
     private Animator animator;
 
@@ -18,6 +24,7 @@ public class Mover : MonoBehaviour
     void Update()
     {
         MovePlayer();
+        ControllerMoveLogic();
     }
 
     void MovePlayer()
@@ -35,6 +42,17 @@ public class Mover : MonoBehaviour
             animator.SetBool("isMoving", false);
         }
         
+    }
+
+    private void OnMove(InputValue value)
+    {
+        moveInputValue = value.Get<Vector2>();
+    }
+
+    private void ControllerMoveLogic()
+    {
+        Vector3 result = moveInputValue * controllerSpeed * Time.deltaTime;
+        rb.velocity = new Vector3(result.x, yVel, result.z);
     }
 
 }
